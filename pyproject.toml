@@ -1,0 +1,23 @@
+[project]
+name = "telegram-chat-analyzer"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "matplotlib>=3.10.1",
+    "numpy>=2.2.3",
+    "pandas>=2.2.3",
+    "python-docx>=1.1.2",
+    "seaborn>=0.13.2",
+]
+
+[dependency-groups]
+dev = ["mypy>=1.15.0", "ruff>=0.9.10"]
+
+[tool.mypy]
+strict = true
+
+
+[tool.ruff.lint]
+extend-select = ["I"]
