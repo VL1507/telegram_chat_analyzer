@@ -1,6 +1,9 @@
 DataExport_*
 *.json
 analyzers_nb/
+notebooks/
+q/
+v2/
 
 *.vscode
 # *.sqlite3
