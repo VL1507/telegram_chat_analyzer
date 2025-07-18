@@ -1,5 +1,3 @@
-import base64
-from io import BytesIO
 from typing import Any
 
 import matplotlib.pyplot as plt
@@ -28,19 +26,16 @@ class TextMessageAnalyzer(BaseAnalyzer):
 
         heatmap_data = heatmap_data / heatmap_data.max()
 
-        plt.figure(figsize=(12, 6))
-        plt.imshow(heatmap_data, cmap="viridis", aspect="auto")
-        plt.colorbar(label="Относительная активность")
-        plt.xticks(np.arange(24), labels=np.arange(24))
-        plt.yticks(np.arange(7), labels=["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"])
-        plt.xlabel("Час дня")
-        plt.ylabel("День недели")
-        plt.title("Активность сообщений по времени")
+        plt.figure(figsize=(12, 6)) # type: ignore
+        plt.imshow(heatmap_data, cmap="viridis", aspect="auto") # type: ignore
+        plt.colorbar(label="Относительная активность") # type: ignore
+        plt.xticks(np.arange(24), labels=np.arange(24)) # type: ignore
+        plt.yticks(np.arange(7), labels=["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]) # type: ignore
+        plt.xlabel("Час дня") # type: ignore
+        plt.ylabel("День недели") # type: ignore
+        plt.title("Активность сообщений по времени") # type: ignore
 
-        buf = BytesIO()
-        plt.savefig(buf, format="png", bbox_inches="tight", dpi=100)
-        buf.seek(0)
-        img_base64 = base64.b64encode(buf.read()).decode("utf-8")
+        img_base64 = self._save_plot_to_base64()
         plt.close()
 
         activity_by_message_length_base64 = f"data:image/png;base64,{img_base64}"
