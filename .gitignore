@@ -4,6 +4,8 @@ analyzers_nb/
 notebooks/
 q/
 v2/
+main.py
+report.html
 
 *.vscode
 # *.sqlite3
